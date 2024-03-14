@@ -7,7 +7,8 @@ createApp({
     return{
       chats,
       counter: 0,
-      newMessage: ''
+      newMessage: '',
+      search: ''
     }
   },
   methods:{
@@ -29,6 +30,11 @@ createApp({
           message: 'Ok',
           status: 'received'
       },)
+    }
+  },
+  computed:{
+    messagesFound(){
+      return chats.contacts.filter(contact => contact.name.toLowerCase().includes(this.search.toLowerCase()))
     }
   }
 }).mount('#app');

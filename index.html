@@ -38,10 +38,10 @@
           </div>
           <div class="search type d-none">
             <span class="search-icon d-flex"><i class="fa-solid fa-magnifying-glass"></i></span>
-            <input type="text" placeholder="   Cerca o inizia una nuova chat">
+            <input type="text" placeholder="   Cerca o inizia una nuova chat" v-model="search">
           </div>
           <div class="old-msg">
-            <div class="contact d-flex" v-for="(contact, index) in chats.contacts" @click="counter = index">
+            <div class="contact d-flex" v-for="(contact, index) in messagesFound" @click="counter = index">
               <div class="old-msg-avatar">
                 <img :src="contact.avatar" alt="avatar" class="avatar">
               </div>
