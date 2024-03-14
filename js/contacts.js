@@ -1,4 +1,4 @@
-const contacts = {
+const chats = {
   contacts: [
     {
         name: 'Michele',
@@ -41,7 +41,7 @@ const contacts = {
                 date: '20/03/2020 16:35:00',
                 message: 'Mi piacerebbe ma devo andare a fare la spesa.',
                 status: 'sent'
-            }
+            },
         ],
     },
     {
@@ -164,6 +164,6 @@ const contacts = {
   ]
 }
 
-export {contacts};
+export {chats};
 
 
