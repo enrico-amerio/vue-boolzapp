@@ -8,8 +8,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <link rel="stylesheet" href="css/style.css">
-  
+
 </head>
 <body>
   <div id="app">
@@ -40,88 +41,19 @@
             <input type="text" placeholder="   Cerca o inizia una nuova chat">
           </div>
           <div class="old-msg">
-            <div class="contact d-flex">
+            <div class="contact d-flex" v-for="contact in contacts.contacts">
               <div>
-                <img src="img/avatar_1.jpg" alt="avatar" class="avatar">
+                <img :src="contact.avatar" alt="avatar" class="avatar">
               </div>
               <div class="d-none">
                 <div class="old-msg-text">
-                  <h5>Michele</h5>
+                  <h5>{{contact.name}}</h5>
                   <p>Lorem ipsum dolor sit amet</p>
                 </div>
                 <div class="old-msg-time">16:05</div>
               </div>
-            </div>
-            <div class="contact d-flex">
-              <img src="img/avatar_2.jpg" alt="avatar" class="avatar">
-              <div class="d-none">
-                <div class="old-msg-text">
-                  <h5>Fabio</h5>
-                  <p>Lorem ipsum dolor sit amet</p>
-                </div>
-                <div class="old-msg-time">16:03</div>
-              </div>
-            </div>
-            <div class="contact d-flex">
-              <img src="img/avatar_3.jpg" alt="avatar" class="avatar">
-              <div class="d-none">
-                <div class="old-msg-text">
-                  <h5>Samuele</h5>
-                  <p>Lorem ipsum dolor sit amet</p>
-                </div>
-                <div class="old-msg-time">15:50</div>
-              </div>
-            </div>
-            <div class="contact d-flex">
-              <img src="img/avatar_4.jpg" alt="avatar" class="avatar">
-              <div class="d-none">
-                <div class="old-msg-text">
-                  <h5>Alessandro B.</h5>
-                  <p>Lorem ipsum dolor sit amet</p>
-                </div>
-                <div class="old-msg-time">15:45</div>
-              </div>
-            </div>
-            <div class="contact d-flex">
-              <img src="img/avatar_5.jpg" alt="avatar" class="avatar">
-              <div class="d-none">
-                <div class="old-msg-text">
-                  <h5>Alessandro L.</h5>
-                  <p>Lorem ipsum dolor sit amet</p>
-                </div>
-                <div class="old-msg-time">15:40</div>
-              </div>
-            </div>
-            <div class="contact d-flex">
-              <img src="img/avatar_6.jpg" alt="avatar" class="avatar">
-              <div class="d-none">
-                <div class="old-msg-text">
-                  <h5>Claudia</h5>
-                  <p>Lorem ipsum dolor sit amet</p>
-                </div>
-                <div class="old-msg-time">15:22</div>
-              </div>
-            </div>
-            <div class="contact d-flex">
-              <img src="img/avatar_7.jpg" alt="avatar" class="avatar">
-              <div class="d-none">
-                <div class="old-msg-text">
-                  <h5>Federico</h5>
-                  <p>Lorem ipsum dolor sit amet</p>
-                </div>
-                <div class="old-msg-time">15:15</div>
-              </div>
-            </div>
-            <div class="contact d-flex">
-              <img src="img/avatar_8.jpg" alt="avatar" class="avatar">
-              <div class="d-none">
-                <div class="old-msg-text">
-                  <h5>Davide</h5>
-                  <p>Lorem ipsum dolor sit amet</p>
-                </div>
-                <div class="old-msg-time">15:15</div>
-              </div>
-            </div>
+             </div>
+            
           </div>
         </div>
         <!-- RIGHT -->

@@ -1,11 +1,11 @@
-import { boolzApp } from "./contacts";
+import { contacts } from "./contacts.js";
 
 const { createApp } = Vue;
 
 createApp({
   data(){
     return{
-      boolzApp
+      contacts
     }
   }
 }).mount('#app');
