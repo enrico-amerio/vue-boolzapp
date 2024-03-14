@@ -137,6 +137,9 @@ main{
   margin: 0 15px;
 }
 /* CHAT */
+.col.right{
+  width: 100vh;
+}
 .top-right{
   display: none;
   align-items: center;

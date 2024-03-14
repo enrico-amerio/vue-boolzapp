@@ -48,12 +48,13 @@
               <div class="d-none">
                 <div class="old-msg-text">
                   <h5>{{contact.name}}</h5>
-                  <p>{{contact.messages[contact.messages.length-1].message}}</p>
+                  <p v-if="chats.contacts[index].messages.length > 0">{{contact.messages[contact.messages.length-1].message}}</p>
+                  <p v-else></p>
                 </div>
-                <div class="old-msg-time">{{contact.messages[contact.messages.length-1].date}}</div>
+                <div class="old-msg-time" v-if="chats.contacts[index].messages.length > 0">{{contact.messages[contact.messages.length-1].date}}</div>
+                <div class="old-msg-time" v-else></div>
               </div>
              </div>
-            
           </div>
         </div>
         <!-- RIGHT -->
@@ -63,7 +64,8 @@
               <div><img :src="chats.contacts[counter].avatar" alt="avatar" class="avatar"></div>
               <div class="user">
                 <h5>{{chats.contacts[counter].name}}</h5>
-                <p class="last-seen">{{chats.contacts[counter].messages[chats.contacts[counter].messages.length-1].date}}</p>
+                <p class="last-seen" v-if="chats.contacts[counter].messages.length > 0">{{chats.contacts[counter].messages[chats.contacts[counter].messages.length-1].date}}</p>
+                <p v-else></p>
               </div>
             </div>
               <div class="top-right d-flex">
@@ -73,9 +75,10 @@
             </div>
           </div>
           <div class="chat">
-            <div class="message d-flex" :class="message.status" v-for="(message, indexMsg) in chats.contacts[counter].messages">
+            <div class="message d-flex" :class="message.status"  v-for="(message, indexMsg) in chats.contacts[counter].messages">
               <div class="message-left">
-                <p>{{message.message}}</p>
+                <p v-if="chats.contacts[counter].messages.length > 0">{{message.message}}</p>
+                <p v-else></p>
               </div>
               <div class="message-right d-flex">
                 <div class="menu">
@@ -83,7 +86,7 @@
                   </div>
                   <div class="menu-content">
                     <a href="#">Info messaggio</a>
-                    <a href="#" @click="chats.contacts[counter].messages.splice(indexMsg,1), console.log(chats.contacts[counter].messages)">Cancella messaggio</a>
+                    <a href="#" @click="chats.contacts[counter].messages.splice(indexMsg,1)">Cancella messaggio</a>
                   </div>
                 </div>
                 <div class="message-time">{{message.date}}</div>
@@ -92,7 +95,7 @@
           </div>
           <div class="type bar d-flex ">
             <span class="bottom-logo"><i class="fa-regular fa-face-smile"></i></span>
-            <input type="text" placeholder="  Scrivi un messaggio" v-model="newMessage" @keyup.enter="sendMessage">
+            <input type="text" placeholder="  Scrivi un messaggio" v-model.trim="newMessage" @keyup.enter="sendMessage">
             <span class="bottom-logo"><i class="fa-solid fa-microphone"></i></span>
           </div>
         </div>

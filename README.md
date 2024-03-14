@@ -19,4 +19,3 @@ Visualizzazione ora e ultimo messaggio inviato/ricevuto nella lista dei contatti
 1. Si possono trascurare le scrollbar verticali, sia nel pannello dei messaggi, che nella lista dei contatti
 2. I pulsanti e le icone possono non funzionare (a parte l’invio del messaggio)
 3. Per gestire le date, può essere utile la libreria Luxon
-4. La struttura dell’array dei contatti potrebbe avere questa forma:

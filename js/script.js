@@ -13,15 +13,18 @@ createApp({
   },
   methods:{
     sendMessage(){
-      this.chats.contacts[this.counter].messages.push(
-        {
-          date: '10/01/2020 15:50:00',
-          message: `${this.newMessage}`,
-          status: 'sent'
-      },
-      )
-      this.newMessage= ''
-      setTimeout(this.replyMessage, 1000);
+      if(this.newMessage.length > 0){
+        this.chats.contacts[this.counter].messages.push(
+          {
+            date: '10/01/2020 15:50:00',
+            message: `${this.newMessage}`,
+            status: 'sent'
+        },
+        )
+        this.newMessage= ''
+        setTimeout(this.replyMessage, 1000);
+
+      }
     },
     replyMessage(){
       this.chats.contacts[this.counter].messages.push(
@@ -30,7 +33,7 @@ createApp({
           message: 'Ok',
           status: 'received'
       },)
-    }
+    },
   },
   computed:{
     messagesFound(){
