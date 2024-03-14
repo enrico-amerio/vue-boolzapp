@@ -41,16 +41,16 @@
             <input type="text" placeholder="   Cerca o inizia una nuova chat">
           </div>
           <div class="old-msg">
-            <div class="contact d-flex" v-for="contact in contacts.contacts">
-              <div>
+            <div class="contact d-flex" v-for="(contact, index) in contacts.contacts" @click="counter = index">
+              <div class="old-msg-avatar">
                 <img :src="contact.avatar" alt="avatar" class="avatar">
               </div>
               <div class="d-none">
                 <div class="old-msg-text">
                   <h5>{{contact.name}}</h5>
-                  <p>Lorem ipsum dolor sit amet</p>
+                  <p>{{contact.messages[contact.messages.length-1].message}}</p>
                 </div>
-                <div class="old-msg-time">16:05</div>
+                <div class="old-msg-time">{{contact.messages[contact.messages.length-1].date}}</div>
               </div>
              </div>
             
@@ -59,23 +59,23 @@
         <!-- RIGHT -->
         <div class="col right ">
           <div class="bar d-flex ">
-            <div class="top-left d-flex">
-              <div><img src="img/avatar_1.jpg" alt="avatar" class="avatar"></div>
+            <div class="top-left d-flex " >
+              <div><img :src="contacts.contacts[counter].avatar" alt="avatar" class="avatar"></div>
               <div class="user">
-                <h5>Michele</h5>
-                <p class="last-seen">Ultimo accesso oggi alle 16:26</p>
+                <h5>{{contacts.contacts[counter].name}}</h5>
+                <p class="last-seen">{{contacts.contacts[counter].messages[contacts.contacts[counter].messages.length-1].date}}</p>
               </div>
             </div>
               <div class="top-right d-flex">
                 <span class="top-logo"><i class="fa-solid fa-magnifying-glass"></i></span>
-                <span class="top-logo"><i class="fa-solid fa-paperclip"></i></span>
+                <span class="top-logo"><i class="fa-solid fa-paperclip"></i></span> 
                 <span class="top-logo"><i class="fa-solid fa-ellipsis-vertical"></i></span>
             </div>
           </div>
           <div class="chat">
-            <div class="message sent d-flex">
+            <div class="message d-flex" :class="message.status" v-for="(message, index) in contacts.contacts[counter].messages">
               <div class="message-left">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut doloremque dolores commodi suscipit, quibusdam veniam! Mollitia, nemo itaque? Voluptatum laudantium perspiciatis sint! Dolores nobis iusto voluptate aperiam quisquam a natus.</p>
+                <p>{{message.message}}</p>
               </div>
               <div class="message-right d-flex">
                 <div class="menu">
@@ -86,22 +86,7 @@
                     <a href="#">Cancella messaggio</a>
                   </div>
                 </div>
-                <div class="message-time">16:13</div>
-              </div>
-            </div>
-            <div class="message received d-flex">
-              <div class="message-left">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut doloremque dolores commodi suscipit, quibusdam veniam! Mollitia, nemo itaque? Voluptatum laudantium perspiciatis sint! Dolores nobis iusto voluptate aperiam quisquam a natus.</p>
-              </div>
-              <div class="message-right d-flex">
-                <div class="menu">
-                  <div class="message-menu"><i class="fa-solid fa-chevron-down"></i></div>
-                  <div class="menu-content">
-                    <a href="#">Info messaggio</a>
-                    <a href="#">Cancella messaggio</a>
-                  </div>
-                </div>
-                <div class="message-time">16:15</div>
+                <div class="message-time">{{message.date}}</div>
               </div>
             </div>
           </div>

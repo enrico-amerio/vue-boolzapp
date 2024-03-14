@@ -90,11 +90,22 @@ main{
 .old-msg{
   height: calc(100% - 70px);
   overflow-y: scroll;
+  cursor: pointer;
 }
 .old-msg-text{
-  margin:0 30px 0 15px;
+  /* margin:0 30px 0 15px; */
+  width: 175px;
 }
-.old-msg-text p, .old-msg-time{
+.old-msg-time, .old-msg-avatar{
+  width: 50px;
+}
+.old-msg-time{
+  font-size: 0.5rem;
+  font-weight: 500;
+  color:#bbbec0;
+
+}
+.old-msg-text p{
   font-size: 0.7rem;
   font-weight: 500;
   color:#bbbec0;
@@ -103,6 +114,7 @@ main{
   border: 1px solid rgb(245, 245, 245) ;
   padding:10px 0;
   background-color: white;
+  width: 100%;
 }
 .contact:last-of-type{
   border-bottom: none;
@@ -171,13 +183,13 @@ main{
   margin-right: 25px;
 }
 .message-right{
-  width: 5%;
+  width: 10%;
   padding: 10px 30px 10px 0;
   flex-direction: column;
   justify-content: space-between;
 }
 .message-left{
-  width: 95%;
+  width: 90%;
 }
 .message-time, .message-menu{
   color: #bbc3bb;
