@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
+
   <link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -40,13 +42,13 @@
             <span class="search-icon d-flex"><i class="fa-solid fa-magnifying-glass"></i></span>
             <input type="text" placeholder="   Cerca o inizia una nuova chat" v-model="search">
           </div>
-          <div class="old-msg">
-            <div class="contact d-flex" v-for="(contact, index) in messagesFound" @click="counter = index">
+          <div class="old-msg " >
+            <div class="contact d-flex "  v-for="(contact, index) in messagesFound" :class="{ 'active': counter === index }" @click="counter = index">
               <div class="old-msg-avatar">
                 <img :src="contact.avatar" alt="avatar" class="avatar">
               </div>
               <div class="d-none">
-                <div class="old-msg-text">
+                <div class="old-msg-text" >
                   <h5>{{contact.name}}</h5>
                   <p v-if="chats.contacts[index].messages.length > 0">{{contact.messages[contact.messages.length-1].message}}</p>
                   <p v-else></p>
@@ -64,7 +66,7 @@
               <div><img :src="chats.contacts[counter].avatar" alt="avatar" class="avatar"></div>
               <div class="user">
                 <h5>{{chats.contacts[counter].name}}</h5>
-                <p class="last-seen" v-if="chats.contacts[counter].messages.length > 0">{{chats.contacts[counter].messages[chats.contacts[counter].messages.length-1].date}}</p>
+                <p class="last-seen" v-if="chats.contacts[counter].messages.length > 0">Ultimo messaggio: {{chats.contacts[counter].messages[chats.contacts[counter].messages.length-1].date}}</p>
                 <p v-else></p>
               </div>
             </div>
