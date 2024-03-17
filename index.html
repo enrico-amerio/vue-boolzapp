@@ -40,7 +40,7 @@
           </div>
           <div class="search type d-none">
             <span class="search-icon d-flex"><i class="fa-solid fa-magnifying-glass"></i></span>
-            <input type="text" placeholder="   Cerca o inizia una nuova chat" v-model="search">
+            <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="search">
           </div>
           <div class="old-msg " >
             <div class="contact d-flex "  v-for="(contact, index) in messagesFound" :class="{ 'active': contact.ID === activeContactID }" @click="setActiveContact(contact.ID)">
@@ -87,7 +87,7 @@
                   <div class="message-menu"><i class="fa-solid fa-chevron-down"></i>
                   </div>
                   <div class="menu-content">
-                    <a href="#">Info messaggio</a>
+                    <a href="#" >Info messaggio</a>
                     <a href="#" @click="activeContact.messages.splice(indexMsg,1)">Cancella messaggio</a>
                   </div>
                 </div>
@@ -97,7 +97,7 @@
           </div>
           <div class="type bar d-flex ">
             <span class="bottom-logo"><i class="fa-regular fa-face-smile"></i></span>
-            <input type="text" placeholder="  Scrivi un messaggio" v-model.trim="newMessage" @keyup.enter="sendMessage">
+            <input type="text" placeholder="Scrivi un messaggio" v-model.trim="newMessage" @keyup.enter="sendMessage">
             <span class="bottom-logo"><i class="fa-solid fa-microphone"></i></span>
           </div>
         </div>

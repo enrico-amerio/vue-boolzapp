@@ -73,8 +73,11 @@ main{
 .search.type input{
   width: 80%;
   margin: 5px 4px 5px 0px;
-
+  
 }
+
+
+
 .search-icon{
   align-items: center;
   color: #8c9294;
@@ -86,6 +89,7 @@ main{
 .search.type input[type=text]{
   border-radius: 0px 5px 5px 0px;
   color: #b1b1b1;
+   padding: 6px 12px;
 }
 .old-msg{
   height: calc(100% - 70px);
@@ -228,8 +232,10 @@ main{
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
-  
 }
+.menu-content:hover  {
+  display: block;
+} 
 
 .menu-content a {
   color: black;
@@ -242,9 +248,6 @@ main{
   background-color: white;
 }
 
-/* .menu:hover .menu-content {
-  display: block;
-} */
 
 
 
