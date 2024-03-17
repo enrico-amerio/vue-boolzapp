@@ -4,11 +4,20 @@ import { chats } from "./contacts.js";
 
 const { createApp } = Vue;
 
+
+  chats.contacts.forEach((contact, i) => {
+    const genID = i + 1;
+    contact.ID = genID;
+    console.log(contact);
+  });
+
+
 createApp({
   data(){
     return{
       chats,
-      counter: 0,
+      counter: 0, 
+      activeContactID: 1,
       newMessage: '',
       search: '',
       messageReplies: [
@@ -37,9 +46,13 @@ createApp({
     }
   },
   methods:{
+    setActiveContact(contactID) {
+      this.activeContactID = contactID;
+      
+    },
     sendMessage(){
       if(this.newMessage.length > 0){
-        this.chats.contacts[this.counter].messages.push(
+        this.activeContact.messages.push(
           {
             date: `${DateTime.now().toFormat('D T')}`,
             message: `${this.newMessage}`,
@@ -51,7 +64,9 @@ createApp({
       }
     },
     replyMessage(){
-      this.chats.contacts[this.counter].messages.push(
+      console.log(this.chats.contacts);
+
+      this.activeContact.messages.push(
         {
           date: `${DateTime.now().toFormat('D TT')}`,
           message: `${this.getRandomReply()}`,
@@ -66,7 +81,12 @@ createApp({
   computed:{
     messagesFound(){
       return chats.contacts.filter(contact => contact.name.toLowerCase().includes(this.search.toLowerCase()))
+    },
+    activeContact() {
+      return this.chats.contacts.find(contact => contact.ID === this.activeContactID);
     }
+    
+   
     
   },
   
