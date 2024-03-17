@@ -179,6 +179,9 @@ main{
 .message:first-of-type{
   margin-top: 30px;
 }
+.message:last-of-type{
+  margin-bottom: 20px;
+}
 .message.received{
   background-color: white;
   margin-left: 25px;
