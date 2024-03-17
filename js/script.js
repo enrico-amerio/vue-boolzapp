@@ -4,13 +4,10 @@ import { chats } from "./contacts.js";
 
 const { createApp } = Vue;
 
-
-  chats.contacts.forEach((contact, i) => {
-    const genID = i + 1;
-    contact.ID = genID;
-    console.log(contact);
-  });
-
+chats.contacts.forEach((contact, i) => {
+  const genID = i + 1;
+  contact.ID = genID;
+});
 
 createApp({
   data(){
@@ -22,15 +19,18 @@ createApp({
       search: '',
       messageReplies: [
         "Non tutti coloro che vagano sono perduti.",
+        "Legolas, cosa vedono i tuoi occhi di elfo?",
+        "Vorrei che l'anello non fosse mai venuto a me. Vorrei che non fosse accaduto nulla.",
+        "Sorge il sole rosso. Stanotte è stato versato del sangue.",
         "L'anello deve essere distrutto!",
         "Devi decidere cosa fare del tempo che ti è stato dato.",
         "Un Anello per domarli, un Anello per trovarli, un Anello per ghermirli e nel buio incatenarli.",
         "Io sono l'amico di Gandalf il Grigio; non temo alcuna oscurità.",
+        "Io sono vecchio Gandalf. So che non lo sembro, ma comincio a sentirlo nel cuore. Mi sento... sottile, quasi stiracchiato, come del burro spalmato su troppo pane. Ci vuole una vacanza, una lunghissima vacanza. E credo proprio che non tornerò.",
         "E non è questo il senso del viaggio, scendere nella tomba mugghiante, per scoprire se è possibile uscirne?",
         "Che gli alberi siano con noi!",
         "Non posso portare l'Anello, ma posso portare te.",
         "Addio e arrivederci, ecco il sole tramonta!",
-        "Ciò che faremo della vita di ogni uomo la farà tremare la terra.",
         "Una grande avventura, si sta spalancando davanti a noi.",
         "Non ti lascerò mai finché sarò vivo.",
         "Nessuno esce da queste terre con la vita.",
@@ -41,6 +41,7 @@ createApp({
         "So che non è giusto, ma lo desidero tanto!",
         "Al di là di questi argini e di queste siepi vedo più chiaro il cielo!",
         "L'unico modo per tenere lontano il male è andare incontro a esso.",
+        "Non t’impicciare degli affari degli Stregoni, perché sono astuti e suscettibili.",
         "Le vie del mondo si snodano per chi le osa percorrere.",
         "Nessuno ha mai detto che sarebbe stato facile, Frodo.",
         "Una volta, era un tempo così tranquillo...",
@@ -48,7 +49,7 @@ createApp({
         "Verranno giorni migliori, figlio mio.",
         "Non scoraggiarti, Frodo. Anche i più piccoli possono cambiare il corso della storia.",
         "E adesso si avvicina la fine. Il viaggio è quasi terminato...",
-        "Il coraggio non manca ai hobbit. / Hobbit sono più coraggiosi di quanto si possa immaginare.",
+        "GLi Hobbit sono più coraggiosi di quanto si possa immaginare.",
         "Non tutti quelli che errano sono perduti.",
         "Nel tempo di guerra, le tue parole valgono poco.",
         "Una luce debolissima può gettare l'ombra più lunga.",
@@ -88,13 +89,13 @@ createApp({
         "Anche il più piccolo sforzo può portare grandi risultati.",
         "Nel momento del bisogno, la lealtà è la più preziosa delle virtù.",
         "La vera amicizia supera ogni difficoltà.",
+        "I consigli sono doni pericolosi, anche se scambiati fra saggi, e tutte le strade possono finire in un precipizio.",
       ]
     }
   },
   methods:{
     setActiveContact(contactID) {
       this.activeContactID = contactID;
-      
     },
     sendMessage(){
       if(this.newMessage.length > 0){
@@ -108,21 +109,28 @@ createApp({
         this.newMessage= ''
         setTimeout(this.replyMessage, 1000);
       }
+      this.scrollDown()
     },
     replyMessage(){
-      console.log(this.chats.contacts);
-
       this.activeContact.messages.push(
         {
           date: `${DateTime.now().toFormat('D TT')}`,
           message: `${this.getRandomReply()}`,
           status: 'received'
       },)
+      this.scrollDown()
     },
     getRandomReply() {
       const randomNumber = Math.floor(Math.random() * this.messageReplies.length);
       return this.messageReplies[randomNumber];
+    },
+    scrollDown(){
+      const chatContainer = document.querySelector('.chat');
+      chatContainer.scrollTop = chatContainer.scrollHeight;
     }
+  },
+  updated() {
+    this.scrollDown();
   },
   computed:{
     messagesFound(){
@@ -131,9 +139,5 @@ createApp({
     activeContact(){
       return this.chats.contacts.find(contact => contact.ID === this.activeContactID);
     }
-    
-   
-    
   },
-  
 }).mount('#app');

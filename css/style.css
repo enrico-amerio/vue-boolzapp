@@ -212,6 +212,8 @@ main{
 .menu {
   position: relative;
   display: inline-block;
+  cursor: pointer;
+
 }
 .menu:focus .menu-content{
   display:block;
