@@ -61,6 +61,9 @@ createApp({
       chatContainer.scrollTop = chatContainer.scrollHeight;
     },
     goTopPlace(){
+      const activeIndexData = this.chats.contacts.findIndex(contact => contact.ID === this.activeContactID);
+      const activeContactData = this.chats.contacts.splice(activeIndexData, 1)[0];
+      this.chats.contacts.unshift(activeContactData); 
       const activeIndex = this.messagesFound.findIndex(contact => contact.ID === this.activeContactID);
       const activeContact = this.messagesFound.splice(activeIndex, 1)[0];
       this.messagesFound.unshift(activeContact); 
