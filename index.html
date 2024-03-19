@@ -50,10 +50,10 @@
               <div class="d-none">
                 <div class="old-msg-text">
                   <h5>{{contact.name}}</h5>
-                  <p v-if="contact.messages.length > 0">{{contact.messages[contact.messages.length-1].message}}</p>
+                  <p v-if="contact.messages.length > 0">{{contact.messages.at(-1).message}}</p>
                   <p v-else></p>
                 </div>
-                <div class="old-msg-time" v-if="chats.contacts[index].messages.length > 0">{{contact.messages[contact.messages.length-1].date}}</div>
+                <div class="old-msg-time" v-if="chats.contacts[index].messages.length > 0">{{contact.messages.at(-1).date}}</div>
                 <div class="old-msg-time" v-else></div>
               </div>
              </div>
@@ -66,7 +66,7 @@
               <div><img :src="activeContact.avatar" alt="avatar" class="avatar"></div>
               <div class="user">
                 <h5>{{activeContact.name}}</h5>
-                <p class="last-seen" v-if="activeContact.messages.length > 0">Ultimo messaggio: {{activeContact.messages[activeContact.messages.length-1].date}}</p>
+                <p class="last-seen" v-if="activeContact.messages.length > 0">Ultimo messaggio: {{activeContact.messages.at(-1).date}}</p>
                 <p v-else></p>
               </div>
             </div>
