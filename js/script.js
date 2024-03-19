@@ -38,7 +38,8 @@ createApp({
         this.newMessage= ''
         setTimeout(this.replyMessage, 1000);
       }
-      this.scrollDown()
+      this.scrollDown();
+      this.goTopPlace();
     },
     replyMessage(){
       this.activeContact.messages.push(
@@ -47,7 +48,9 @@ createApp({
           message: `${this.getRandomReply()}`,
           status: 'received'
       },)
-      this.scrollDown()
+      this.scrollDown();
+      this.goTopPlace();
+
     },
     getRandomReply() {
       const randomNumber = Math.floor(Math.random() * this.reply.messageReplies.length);
@@ -56,6 +59,16 @@ createApp({
     scrollDown(){
       const chatContainer = document.querySelector('.chat');
       chatContainer.scrollTop = chatContainer.scrollHeight;
+    },
+    goTopPlace(){
+      const activeIndex = this.messagesFound.findIndex(contact => contact.ID === this.activeContactID);
+      const activeContact = this.messagesFound.splice(activeIndex, 1)[0];
+      this.messagesFound.unshift(activeContact); 
+      this.scrollUp();
+      },
+    scrollUp(){
+      const contactContainer =  document.querySelector('.old-msg');
+      contactContainer.scrollTop = 0;
     }
   },
   updated() {
